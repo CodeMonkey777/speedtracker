@@ -16,7 +16,7 @@ class Dashboard extends React.Component {
     const videoFrames = (lastResult && lastResult.videoFrames) || []
     const wptUrl = this.props.profile.wptUrl
       ? (this.props.profile.wptUrl.indexOf('http') === 0 ? this.props.profile.wptUrl : null)
-      : 'https://www.webpagetest.org'
+      : 'http://wpt.tcsbank.ru'
     const profileUrl = this.props.profile.parameters.url
 
     const onClickPagespeed = function (event, data) {
@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
       const result = results[timestamp]
       const encodedUrl = encodeURIComponent(profileUrl)
       const insightsUrl = `https://developers.google.com/speed/pagespeed/insights/?url=${encodedUrl}`
-      const lighthouseUrl = `https://www.webpagetest.org/lighthouse.php?test=${result.id}`
+      const lighthouseUrl = `http://wpt.tcsbank.ru/lighthouse.php?test=${result.id}`
 
       if (event.shiftKey) {
         window.open(lighthouseUrl, '_blank')

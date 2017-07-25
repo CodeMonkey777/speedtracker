@@ -37,7 +37,7 @@ const getDateRangeForPeriod = (period) => {
 }
 
 const getVideoFrameURL = (baseURL, id, frame) => {
-  baseURL = baseURL || 'https://www.webpagetest.org'
+  baseURL = baseURL || 'http://wpt.tcsbank.ru'
 
   const filename = frame._i || `frame_${leftPad(frame._t / 100, 4)}.jpg`
 
