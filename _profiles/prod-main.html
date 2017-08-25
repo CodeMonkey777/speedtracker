@@ -7,4 +7,9 @@ parameters:
   location: "Office_Chrome"
   runs: 3
   url: "36a572d3fac37105c5d2e7647bba323408423c48fcf8"
+budgets:
+  -
+    metric: fullyLoaded
+    max: 5000
+    alerts: ['slackAlert']
 ---

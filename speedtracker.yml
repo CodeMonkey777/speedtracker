@@ -64,16 +64,16 @@ encryptionKey: "36be6adafa91375e"
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-#alerts:
+alerts:
 #  emailAlert:
 #    type: "email"
 #    recipients: ["ENCRYPTED_EMAIL_ADDRESS"]
 #  otherEmailAlert:
 #    type: "email"
 #    recipients: ["ENCRYPTED_EMAIL_ADDRESS2", "ENCRYPTED_EMAIL_ADDRESS3"]
-#  slackAlert:
-#    type: "slack"
-#    hookUrl: "ENCRYPTED_SLACK_HOOK_URL"
-#    channel: "#speedtracker"
-#    username: "SpeedTracker"
-#    iconEmoji: ":grimacing:"
+  slackAlert:
+    type: "slack"
+    hookUrl: "36a572d3fac37105dacaff217cfd2f3306473148ede23978025e47baeea720aa43dae2107e1fa8b06163b54067ea7ff00d7ed4fd715acebda79b18ef50df0a833d6cf6c2c99f68ddc0d31532ae"
+    channel: "#pf-speedtracker"
+    username: "SpeedTracker"
+    iconEmoji: ":grimacing:"
