@@ -1,0 +1,19 @@
+---
+name: "QA4 - /login/ - Native"
+default: false
+interval: 12
+
+---
+parameters:
+    Label: speedtracker_qa4_auth_login
+    connectivity: Native
+    location: Office_Chrome
+    runs: 1
+    scriptDescription:
+        - combineSteps
+        -
+            navigate: "https://www-qa4.tcsbank.ru"
+        -
+            navigate: "https://www-qa4.tcsbank.ru/login/"
+---
+
