@@ -139,6 +139,32 @@ export default {
       name: 'Lighthouse PWA score',
       unit: '',
       description: 'A Progressive Web App (PWA) score defined by Google Lighthouse'
+    },
+    timeline: {
+      scripting: {
+        name: 'Scripting',
+        color: [251, 177, 60],
+        transform: (value) => (value || 0).toFixed(0),
+        unit: 'ms'
+      },
+      rendering: {
+        name: 'Rendering',
+        color: [33, 131, 128],
+        transform: (value) => (value || 0).toFixed(0),
+        unit: 'ms'
+      },
+      loading: {
+        color: [143, 45, 86],
+        transform: (value) => (value || 0).toFixed(0),
+        name: 'Loading',
+        unit: 'ms'
+      },
+      painting: {
+        color: [216, 17, 89],
+        transform: (value) => (value || 0).toFixed(0),
+        name: 'Painting',
+        unit: 'ms'
+      }
     }
   },
 

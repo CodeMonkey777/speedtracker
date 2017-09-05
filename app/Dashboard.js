@@ -124,6 +124,23 @@ class Dashboard extends React.Component {
           yLabel='Requests'
         />
 
+        {this.props.profile.parameters.timeline ? <Section {...this.props}
+          id='timeline'
+          footNote={(
+            <span>Click on a data point to see the corresponding WebPageTest result</span>
+          )}
+          lastResult={lastResult}
+          onClick={onClickWpt}
+          metrics={[
+            'timeline.scripting',
+            'timeline.painting',
+            'timeline.loading',
+            'timeline.rendering'
+          ]}
+          title='Timeline info'
+          yLabel='Time (milliseconds)'
+        /> : null}
+
         {videoFrames.length && wptUrl &&
           <div className='c-Section'>
             <h3 className='c-Section__title'>Latest filmstrip view</h3>
