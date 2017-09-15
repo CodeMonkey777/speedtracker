@@ -22,6 +22,14 @@
 1. Commit and push the changed files.
 1. Use the [test tool](https://speedtracker.org/test) to run a test.
 
+## Clear invalid test
+
+  ```
+  node clear.js 'prod-main:170903_FX_H'
+  node clear.js '<scenario>:<testId>'
+  ```
+  
+
 ## Development
 
 1. Install dependencies

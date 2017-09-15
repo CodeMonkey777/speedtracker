@@ -1,6 +1,9 @@
 const jsonfile = require('jsonfile');
 const { remove } = require('ramda');
-const [scenario, year, month, testId] = process.argv[2].split(':');
+const [scenario, testId] = process.argv[2].split(':');
+
+const year = '20' + testId.slice(0,2);
+const month = testId.slice(2,4);
 
 console.log(scenario, year, month, testId);
 const filename = `./results/${scenario}/${year}/${month}.json`;
