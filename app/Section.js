@@ -5,11 +5,13 @@ import Chart from './Chart'
 import Info from './Info'
 import Constants from './Constants'
 
-const objectPath = require('object-path')
+const objectPath = require('object-path');
 
 class Section extends React.Component {
   render () {
-    let budgets = (this.props.profile.budgets || []).filter(budget => (this.props.metrics.indexOf(budget.metric) !== -1))
+    let budgets = (this.props.profile.budgets || []).filter(budget => (this.props.metrics.indexOf(budget.metric) !== -1));
+    let allMetricsSum = 0;
+    let allUnit;
 
     return (
       <div className='c-Section'>
@@ -22,11 +24,13 @@ class Section extends React.Component {
 
             if (typeof value !== 'undefined') {
               if (typeof metric.transform === 'function') {
-                value = metric.transform(value)
+                value = metric.transform(value);
               }
+              allMetricsSum += Number(value);
 
               if (metric.unit) {
-                value += metric.unit
+                allUnit = metric.unit;
+                value += metric.unit;
               }
             } else {
               value = '—'
@@ -42,6 +46,11 @@ class Section extends React.Component {
               </dl>
             )
           })}
+
+          {this.props.showAll && <dl key='all' className='c-Indicator'>
+            <dt className='c-Indicator__key'>All</dt>
+            <dd className='c-Indicator__value'>{this.props.allTransform(allMetricsSum)}{allUnit}</dd>
+          </dl>}
 
           {budgets.map((budget, index) => {
             const metric = objectPath.get(Constants.metrics, budget.metric)

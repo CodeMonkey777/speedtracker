@@ -91,6 +91,8 @@ class Dashboard extends React.Component {
           )}
           lastResult={lastResult}
           onClick={onClickWpt}
+          showAll
+          allTransform={value => value.toFixed(1)}
           metrics={[
             'breakdown.html.bytes',
             'breakdown.js.bytes',
@@ -111,6 +113,8 @@ class Dashboard extends React.Component {
           )}
           lastResult={lastResult}
           onClick={onClickWpt}
+          showAll
+          allTransform={value => value.toFixed(0)}
           metrics={[
             'breakdown.html.requests',
             'breakdown.js.requests',

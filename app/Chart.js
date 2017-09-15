@@ -14,6 +14,7 @@ class Chart extends React.Component {
     const dateFrom = dates.from.getTime()
     const dateTo = dates.to.getTime()
     const results = this.props.results
+    const allTransform = this.props.allTransform
 
     let timestamps = Utils.getTimestampsByInterval(results, dateFrom, dateTo)
 
@@ -41,7 +42,8 @@ class Chart extends React.Component {
         lineTension: 0.6,
         pointHoverRadius: 10,
         pointHitRadius: 10,
-        pointRadius: 5
+        pointRadius: 5,
+        cubicInterpolationMode: 'monotone'
       })
     })
 
@@ -84,6 +86,32 @@ class Chart extends React.Component {
     const labels = timestamps.map(timestamp => timestamp * 1000)
     const target = document.getElementById(`chart${this.props.id}`)
 
+    const callbacks = {
+      title: function (tooltipItems) {
+        const date = new Date(tooltipItems[0].xLabel)
+        const year = date.getFullYear()
+        const month = date.getMonth() + 1
+        const day = date.getDate()
+        const hours = date.getHours()
+        const minutes = date.getMinutes()
+        const seconds = date.getSeconds()
+
+        return `${day}/${month}/${year} @ ${hours}:${minutes}:${seconds}`
+      }
+    };
+
+    if (this.props.showAll) {
+      callbacks.footer = function (tooltipItems, data) {
+        let sum = 0;
+
+        tooltipItems.forEach(function(tooltipItem) {
+          sum += Number(tooltipItem.yLabel)
+        });
+
+        return 'All: ' + allTransform(sum);
+      }
+    }
+
     /* eslint-disable no-new */
     new ChartJS(target, {
       type: 'line',
@@ -119,19 +147,7 @@ class Chart extends React.Component {
         tooltips: {
           enabled: true,
           mode: 'label',
-          callbacks: {
-            title: function (tooltipItems, data) {
-              const date = new Date(tooltipItems[0].xLabel)
-              const year = date.getFullYear()
-              const month = date.getMonth() + 1
-              const day = date.getDate()
-              const hours = date.getHours()
-              const minutes = date.getMinutes()
-              const seconds = date.getSeconds()
-
-              return `${day}/${month}/${year} @ ${hours}:${minutes}:${seconds}`
-            }
-          },
+          callbacks,
           position: 'nearest'
         }
       }
