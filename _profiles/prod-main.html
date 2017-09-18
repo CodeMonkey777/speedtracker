@@ -10,10 +10,10 @@ parameters:
 budgets:
   -
     metric: fullyLoaded
-    max: 5000
+    max: 10000
     alerts: ['slackAlert']
   -
-    metric: breakdown.js.requests
-    max: 10
+    metric: breakdown.js.bytes
+    max: 900000
     alerts: ['slackAlert']
 ---
